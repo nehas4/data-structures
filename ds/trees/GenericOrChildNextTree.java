@@ -36,4 +36,41 @@ public class GenericOrChildNextTree {
 			return 0;
 		return node.getData() + findSum(node.getFirstChild()) + findSum(node.getNextSibling());
 	}
+	
+	/**
+	 * Method to find the number of siblings of a given node in generic tree
+	 * 
+	 * @param node
+	 * @return Siblings count
+	 */
+	public int SiblingsCount(GenericOrChildNextTree node)
+	{
+		int count = 0;
+		
+		while(node != null)
+		{
+			count++;
+			node = node.getNextSibling();
+		}
+		
+		return count;
+	}
+	
+	/**
+	 * Method to return the number children of a given node in Generic Tree
+	 * 
+	 * @param node
+	 * @return
+	 */
+	public int childCount(GenericOrChildNextTree node)
+	{
+		int count = 0;
+		node = node.getFirstChild();
+		while(node != null)
+		{
+			count++;
+			node = node.getNextSibling();
+		}
+		return count;
+	}
 }
