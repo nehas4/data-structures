@@ -1321,4 +1321,48 @@ public class BinaryTreeHelper {
 		node.setRight(binaryTreeFromPreOrderIL(order, i));
 		return node;
 	}
+	
+	/*
+	 * Global static variables to keep hold of last visited nodes in order to use
+	 * them again in process of other nodes preOrder successor
+	 */
+	static BinaryTreeNode P = null;
+	static Stack<BinaryTreeNode> S = new Stack<>();
+	
+	
+	/**
+	 * Method to get pre-order successor of a node in a Binary Tree
+	 * 
+	 * @param node
+	 * @return
+	 */
+	public BinaryTreeNode getPreOrderSucessor(BinaryTreeNode node)
+	{
+		if(node != null)
+		{
+			P = node;
+		}
+		
+		// If there is left of current node,
+		// then push the current to stack and return the left node as pre-order successor
+		if(P.getLeft() != null)
+		{
+			S.push(P);
+			P = P.getLeft();
+		}
+		else // In case there is no left of current node
+		{
+			// Get the nodes from stack until there is right node of current node
+			// This way we will get the right node of root of given node
+			// means pre-order successor (right sibling) of a left most node
+			while(P.getRight() == null)
+			{
+				P = S.pop();
+			}
+			P.getRight();
+		}
+		
+		return P;
+	}
+	
 }

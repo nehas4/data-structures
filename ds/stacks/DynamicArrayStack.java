@@ -1,7 +1,5 @@
 package ds.stacks;
 
-import groovy.sql.ExpandedVariable;
-
 public class DynamicArrayStack {
 	
 	int capacity;
